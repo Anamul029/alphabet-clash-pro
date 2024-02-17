@@ -39,3 +39,5 @@ function getElementTextById(id){
     const alpha=element.innerText;
     return alpha;
 }
+
+// function game over

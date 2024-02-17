@@ -25,6 +25,34 @@ function continueGame() {
 // captured keybord key press
 function handlekeybordButtonPress(event) {
     const playerPressed = event.key;
+    //press the 'esc' button to stop the game
+    if (playerPressed === 'Escape') {
+         //  go to the end section of this game
+        const currentSec = document.getElementById('play');
+            currentSec.classList.add('hidden')
+            const endGame = document.getElementById('endPart');
+            endGame.classList.remove('hidden')
+            // showing final score by id
+            const finalScore = document.getElementById('final-score');
+            //  current score by id
+            const score = document.getElementById('current-score');
+            finalScore.innerText = score.innerText;
+            // play again
+            document.getElementById('play-again-btn').addEventListener('click', function () {
+                // set the initial life and score by id
+                score.innerText = '0';
+                life.innerText = '5';
+                // remove last alphabet backgground-color
+                // step1 get the alphabet by id
+                const lastAlpha = getElementTextById('currentElement');
+                // then remove backgroun bg
+                removeBackgroundColorById(lastAlpha);
+                hideElementById('endPart');
+                showElementById('play');
+                continueGame();
+
+            })
+    }
     //   get the expected to press
     const currentElement = document.getElementById('currentElement')
     const currentAlphabet = currentElement.innerText;
@@ -44,14 +72,13 @@ function handlekeybordButtonPress(event) {
         continueGame();
     }
     else {
-        
+
         // console.log('you miss and you loss a life')
         const life = document.getElementById('current-life');
         const totalLife = (life.innerText)--;
-        const Totallife=parseInt(totalLife);
+        const Totallife = parseInt(totalLife);
         if (Totallife === 0) {
-             // clear the last selected alphabet background
-            
+            //  go to the end section of this game
             const currentSec = document.getElementById('play');
             currentSec.classList.add('hidden')
             const endGame = document.getElementById('endPart');
@@ -68,14 +95,12 @@ function handlekeybordButtonPress(event) {
                 life.innerText = '5';
                 // remove last alphabet backgground-color
                 // step1 get the alphabet by id
-                const lastAlpha=getElementTextById('currentElement');
+                const lastAlpha = getElementTextById('currentElement');
                 // then remove backgroun bg
                 removeBackgroundColorById(lastAlpha);
                 hideElementById('endPart');
                 showElementById('play');
                 continueGame();
-               
-
 
             })
         }
