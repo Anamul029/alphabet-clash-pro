@@ -65,13 +65,17 @@ function handlekeybordButtonPress(event) {
         // update score
         const score = document.getElementById('current-score');
         const totalScore = (score.innerText)++;
-
+    //    play audio
+          playAudio('right');
 
         // start a new round
         removeBackgroundColorById(expectedAlphabet);
         continueGame();
     }
     else {
+
+        // play audio wrong
+        playAudio('wrong');
 
         // console.log('you miss and you loss a life')
         const life = document.getElementById('current-life');

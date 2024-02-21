@@ -40,4 +40,8 @@ function getElementTextById(id){
     return alpha;
 }
 
-// function game over
+// function play audio
+function playAudio(id){
+    const element=document.getElementById(id);
+    element.play();
+}
